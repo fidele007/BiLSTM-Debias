@@ -313,6 +313,15 @@ int main(int argc, char** argv) {
 
         RNNJointModel<LSTMBuilder> lm(model);
 
+        // Import previous model parameters
+        if (argc == 7) {
+          string fname = argv[6];
+          cerr << "Reading params from " << fname << endl;
+          ifstream in(fname);
+          boost::archive::text_iarchive ia(in);
+          ia >> model;
+        }
+
         unsigned report_every_i = 50;
         unsigned dev_every_i_reports = 25;
         unsigned si = training.size();
@@ -419,9 +428,16 @@ int main(int argc, char** argv) {
 
                                 double accuracy = postive*1.0/tokens;
                                 cerr <<"\n >> Accuracy: " << accuracy << "\n";
+
+                                // Export model params
+                                const string fname = "model.params";
+                                ofstream out(fname);
+                                boost::archive::text_oarchive oa(out);
+                                oa << model;
                         }
                 }
         }
+
         delete sgd;
 
         cout<<":) Good luck :)" <<endl;
