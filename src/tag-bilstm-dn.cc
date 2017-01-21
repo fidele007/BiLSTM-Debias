@@ -220,7 +220,7 @@ int main(int argc, char** argv) {
         string line;
         int tlc = 0;
         int ttoks = 0;
-        cerr << "Reading supervision data from " << argv[1] << "...\n";
+        // cerr << "Reading supervision data from " << argv[1] << "...\n";
         {
                 ifstream in(argv[1]);
                 assert(in);
@@ -237,12 +237,12 @@ int main(int argc, char** argv) {
                         ttoks += x.size();
 
                 }
-                cerr << tlc << " lines, " << ttoks << " tokens, " << d.size() << " types\n";
+                // cerr << tlc << " lines, " << ttoks << " tokens, " << d.size() << " types\n";
         }
 
         tlc = 0;
         ttoks = 0;
-        cerr << "Reading projection data from " << argv[2] << "...\n";
+        // cerr << "Reading projection data from " << argv[2] << "...\n";
         {
                 ifstream in(argv[2]);
                 assert(in);
@@ -259,7 +259,7 @@ int main(int argc, char** argv) {
                         ttoks += x.size();
 
                 }
-                cerr << tlc << " lines, " << ttoks << " tokens, " << d.size() << " types\n";
+                // cerr << tlc << " lines, " << ttoks << " tokens, " << d.size() << " types\n";
         }
 
         d.Freeze(); // no new word types allowed
@@ -322,7 +322,7 @@ int main(int argc, char** argv) {
                         boost::trim_left(formattedSnt);
                         boost::trim_right(formattedSnt);
 
-                        cout << "Processing sentence: " << formattedSnt << endl;
+                        // cout << "Processing sentence: " << formattedSnt << endl;
                         vector<int> x, y;
                         ReadSentencePair(formattedSnt, &x, &d, &y, &td);
                         assert(x.size()==y.size());

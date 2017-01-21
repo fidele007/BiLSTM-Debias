@@ -11,6 +11,14 @@ It's developed on clab/cnn toolkit.
 - Add the source code to folder *cnn/examples* and add bilstm-dn to *CMakeLists.txt*.
 - Make again.
 
+## Data format
+The format of input data is as follows:
+```
+Tok_1 Tok_2 ||| Tag_1 Tag_2
+Tok_1 Tok_2 Tok_3 ||| Tag_1 Tag_2 Tag_3
+...
+```
+
 ## How to run
 ```sh
 ./bilstm-dn gold_data_file projected_data_file dev_file test_file max_epochs

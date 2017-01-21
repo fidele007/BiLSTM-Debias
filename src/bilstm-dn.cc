@@ -426,6 +426,10 @@ int main(int argc, char** argv) {
 
                                 cerr << "\n***Best [epoch=" << (lines / (double)training.size()) << "] E = " << (dloss / dtags) << " ppl=" << exp(dloss / dtags) << " acc=" << (dcorr / dtags) << ' ';
 
+                                ofstream out_text("best_params.txt");
+                                out_text << "\n***Best [epoch=" << (lines / (double)training.size()) << "] E = " << (dloss / dtags) << " ppl=" << exp(dloss / dtags) << " acc=" << (dcorr / dtags) << ' ';
+                                out_text.close();
+
                                 double accuracy = postive*1.0/tokens;
                                 cerr <<"\n >> Accuracy: " << accuracy << "\n";
 
